@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Candidate</title>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap-icons.min.css">
+</head>
+<style>
+    .search-container {
+        display: flex;
+        align-items: center;
+    }
+    .form-control, .form-select, .btn {
+        margin-right: 20px;
+    }
+</style>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{commons/navbar :: navbar}"></div>
+        <div class="col-11 mt-2">
+            <h1>Candidate</h1>
+            <p>Candidate list</p>
+            <form action="" method="get">
+                <div class="search-container">
+                    <input type="text"  placeholder="Search" class="form-control w-25" style="display:inline-block">
+
+                    <select class="form-select w-25">
+                        <option selected disabled>Status</option>
+                        <option value="1">Open</option>
+                        <option value="2">Banned</option>
+                        <option value="3">Waiting for interview</option>
+                        <option value="4">Cancelled interview</option>
+                        <option value="5">Passed interview</option>
+                        <option value="6">Failed interview</option>
+                        <option value="7">Waiting for approval</option>
+                        <option value="8">Approved offer</option>
+                        <option value="9">Rejected offer</option>
+                        <option value="10">Waiting for response</option>
+                        <option value="11">Accepted offer</option>
+                        <option value="12">Declined offer</option>
+                        <option value="13">Cancelled offer</option>
+                    </select>
+                    <button type="submit" class="btn btn-info">Search</button>
+                </div>
+            </form>
+            <div class="text-end">
+                <form action="/candidate/add" method="get">
+                    <button type="submit" class="btn btn-warning">Add new</button>
+                </form>
+            </div>
+            <div>
+                <table class="table text-center mt-2">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone No.</th>
+                        <th scope="col">Current Position</th>
+                        <th scope="col">Owner HR</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="candidates : ${candidateList}">
+                    <tr>
+                        <td th:text="${candidates.getCandidateFullName()}"></td>
+                        <td th:text="${candidates.getCandidateEmail()}"></td>
+                        <td th:text="${candidates.getCandidatePhonenumber()}"></td>
+                        <td th:text="${candidates.getCandidatePosition()}"></td>
+                        <td th:text="${candidates.getCandidateNote()}"></td>
+                        <td th:text="${candidates.getCandidateStatus()}"></td>
+
+                        <td>
+                            <a th:href="@{'/candidate/delete/' + ${candidates.getCandidateId()}}" onclick="return confirm('Bạn có chắc muốn xóa ứng viên này không?');">Xóa</a>
+                            <a th:href="@{'/candidate/edit/' + ${candidates.getCandidateId()}}">Edit</a>
+                        </td>
+
+
+
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
