@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trích xuất dữ liệu từ tài liệu PDF bằng JavaScript và PDF.js</title>
+  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+  </script>
+  <script>
+    function extractData() {
+      var file = document.getElementById("fileInput").files[0];
+      var fileReader = new FileReader();
+      fileReader.onload = function() {
+        var typedarray = new Uint8Array(this.result);
+        pdfjsLib.getDocument(typedarray).promise.then(function(pdf) {
+          var numPages = pdf.numPages;
+          var fullText = '';
+          for (var i = 1; i <= numPages; i++) {
+            pdf.getPage(i).then(function(page) {
+              page.getTextContent().then(function(textContent) {
+                var pageText = '';
+                for (var j = 0; j < textContent.items.length; j++) {
+                  pageText += textContent.items[j].str + ' ';
+                }
+                fullText += pageText;
+                if (i == numPages) {
+                  console.log(fullText);
+                }
+              });
+            });
+          }
+        });
+      }
+      fileReader.readAsArrayBuffer(file);
+    }
+  </script>
+</head>
+<body>
+  <input type="file" id="fileInput">
+  <button onclick="extractData()">Trích xuất dữ liệu</button>
+</body>
+</html>

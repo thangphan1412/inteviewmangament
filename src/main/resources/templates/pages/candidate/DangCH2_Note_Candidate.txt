@@ -1,0 +1,7 @@
+Phần list chưa chỉnh sửa được cái tìm kiếm
+
+Phần create candidate cái position chưa thêm được chức vụ mới( tương tự với số năm kinh nghiệm với skills, higest level,Recruiter), Chưa có assign me
+
+Edit Candidate chính là Candidate information ( ấn vào nút edit thì sẽ cho chỉnh sửa)
+
+Code phần lấy số phần tử trong 1 trang (bao nhiên phần tử trong 1 page)

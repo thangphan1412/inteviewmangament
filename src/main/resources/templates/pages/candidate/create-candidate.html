@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:java8="http://www.thymeleaf.org/extras/java8time">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
+    <meta name="author" content="NobleUI">
+    <meta name="keywords"
+        content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+    <title>Create Candidate</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- End fonts -->
+
+    <!-- core:css -->
+    <link rel="stylesheet" href="/assets/vendors/core/core.css">
+    <!-- endinject -->
+
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="/assets/vendors/sweetalert2/sweetalert2.min.css">
+
+    <!-- End plugin css for this page -->
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/assets/fonts/feather-font/css/iconfont.css">
+    <link rel="stylesheet" href="/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <!-- endinject -->
+
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/demo1/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="/assets/images/favicon.png" />
+
+    <style>
+        form .card-title{
+            text-align: end;
+            margin-right: 30px;
+            margin-top: 15px;
+            font-size: 17px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <a href="#" class="sidebar-brand">
+                    IMS<span>RECRUIT</span>
+                </a>
+                <div class="sidebar-toggler not-active">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="sidebar-body">
+                <ul class="nav">
+                    <li class="nav-item nav-category">Home</li>
+                    <li class="nav-item">
+                        <a href="../../dashboard.html" class="nav-link">
+                            <i class="link-icon" data-feather="box"></i>
+                            <span class="link-title">Home</span>
+                        </a>
+                    </li>
+                    <!-- Candidate -->
+
+                    <li class="nav-item nav-category">Candidate</li>
+                    <li class="nav-item active">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#candidates" role="button"
+                           aria-expanded="false" aria-controls="candidates">
+                            <i class="link-icon" data-feather="users"></i>
+                            <span class="link-title">Candidate</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse show" id="candidates">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="/Candidate/candidateList" class="nav-link">Candidate
+                                        List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Candidate/CreateCandidate" class="nav-link active">Create
+                                        Candidate</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Job -->
+                    <li class="nav-item nav-category">Job</li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#jobs" role="button" aria-expanded="false"
+                           aria-controls="candidates">
+                            <i class="link-icon" data-feather="briefcase"></i>
+                            <span class="link-title">Job</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="jobs">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="/Job/jobList" class="nav-link">Job List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Job/createJob" class="nav-link">Create Job</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Interview -->
+                    <li class="nav-item nav-category">Interview</li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#interview" role="button"
+                           aria-expanded="false" aria-controls="candidates">
+                            <i class="link-icon" data-feather="calendar"></i>
+                            <span class="link-title">Interview</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="interview">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="/Interview/interviewList" class="nav-link">Inteview
+                                        List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Interview/createInterview" class="nav-link">Create
+                                        Interview</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Offer -->
+                    <li class="nav-item nav-category">Offer</li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#offer" role="button" aria-expanded="false"
+                           aria-controls="candidates">
+                            <i class="link-icon" data-feather="calendar"></i>
+                            <span class="link-title">Offer</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="offer">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="/offer/view" class="nav-link">Offer List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/offer/create" class="nav-link">Create Offer</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <th:block sec:authorize="hasAuthority('Manager')">
+                        <!-- User -->
+                        <li class="nav-item nav-category">User</li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#user" role="button"
+                               aria-expanded="false"
+                               aria-controls="user">
+                                <i class="link-icon" data-feather="calendar"></i>
+                                <span class="link-title">User</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="user">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                        <a href="/User/userList" class="nav-link">User List</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/User/createUser" class="nav-link">Create User</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </th:block>
+
+                </ul>
+            </div>
+        </nav>
+        <nav class="settings-sidebar">
+            <div class="sidebar-body">
+                <a href="#" class="settings-sidebar-toggler">
+                    <i data-feather="settings"></i>
+                </a>
+                <h6 class="text-muted mb-2">Sidebar:</h6>
+                <div class="mb-3 pb-3 border-bottom">
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarLight"
+                            value="sidebar-light" checked>
+                        <label class="form-check-label" for="sidebarLight">
+                            Light
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarDark"
+                            value="sidebar-dark">
+                        <label class="form-check-label" for="sidebarDark">
+                            Dark
+                        </label>
+                    </div>
+                </div>
+                <div class="theme-wrapper">
+                    <h6 class="text-muted mb-2">Light Theme:</h6>
+                    <a class="theme-item active" href="/demo1/dashboard.html">
+                        <img src="/assets/images/screenshots/light.jpg" alt="light theme">
+                    </a>
+                    <h6 class="text-muted mb-2">Dark Theme:</h6>
+                    <a class="theme-item" href="/demo2/dashboard.html">
+                        <img src="/assets/images/screenshots/dark.jpg" alt="light theme">
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <!-- partial -->
+
+        <div class="page-wrapper">
+            <th:block th:insert="partials/_navbar.html">
+            </th:block>
+            <div class="page-content">
+                <nav class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Candidate</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Create Candidate</li>
+                    </ol>
+                </nav>
+
+                <div class="row">
+                    <div class="col-md-12 stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Create candidate</h6>
+<!--                                <form th:object="${candidate}" th:action="@{createCandidate}" method="post">-->
+<!--                                    <h6 class="card-title">Personal <span class="text-primary">Information</span>  <hr style="height: 1.25px;"> </h6>-->
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">Full Name <span-->
+<!--                                                        class="text-danger">*</span></label>-->
+<!--                                                <input th:field="*{fullname}"  type="text" class="form-control" placeholder="Enter full name" />-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; Col &ndash;&gt;-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">Email <span-->
+<!--                                                        class="text-danger">*</span></label>-->
+<!--                                                <input th:field="*{email}" type="email" class="form-control" placeholder="Enter an email">-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; Col &ndash;&gt;-->
+<!--                                    </div>-->
+<!--                                    &lt;!&ndash; Row &ndash;&gt;-->
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">D.O.B</label>-->
+<!--                                                <input th:field="*{dob}" type="date" class="form-control" placeholder="">-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; Col &ndash;&gt;-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">Address</label>-->
+<!--                                                <input th:field="*{address}" type="text" class="form-control" placeholder="Enter an address">-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; Col &ndash;&gt;-->
+<!--                                    </div>-->
+<!--                                    &lt;!&ndash; Row &ndash;&gt;-->
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">Phone number</label>-->
+<!--                                                <input th:field="*{phoneNo}" type="text" class="form-control" placeholder="Enter an number">-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; Col &ndash;&gt;-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">Gender <span-->
+<!--                                                        class="text-danger">*</span></label>-->
+<!--                                                <select th:field="*{gender}" class="form-select">-->
+<!--                                                    <option selected="" disabled="" value="-1">Select a gender</option>-->
+<!--                                                    <option value="true">Male</option>-->
+<!--                                                    <option value="false">Female</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; Col &ndash;&gt;-->
+<!--                                    </div>-->
+
+<!--                                    &lt;!&ndash; Profressional information &ndash;&gt;-->
+<!--                                    <h6 class="card-title">Profressional <span class="text-primary">Information <hr style="height: 1.25px;"></span> </h6>-->
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">CV Attachment</label>-->
+<!--                                                <input class="form-control" th:field="*{cvAttachment}" type="text" id="formFile">-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; Col &ndash;&gt;-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">Status <span-->
+<!--                                                        class="text-danger">*</span></label>-->
+<!--                                                <select class="form-select" th:field="*{candidateStatus}">-->
+<!--                                                    <option selected="" disabled="" value="-1">Select a status</option>-->
+<!--                                                    <option value="Open">Open</option>-->
+<!--                                                    <option value="Banned">Banned</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; Col &ndash;&gt;-->
+<!--                                    </div>-->
+
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">Position <span-->
+<!--                                                        class="text-danger">*</span></label>-->
+<!--                                                <select class="form-select" th:field="*{postion}">-->
+<!--                                                    <option selected="" disabled=""  value="-1">Select a position</option>-->
+<!--                                                    <option value="Backend Developer">Backend Developer</option>-->
+<!--                                                    <option value="Business Analyst">Business Analyst</option>-->
+<!--                                                    <option value="Tester">Tester</option>-->
+<!--                                                    <option value="HR">HR</option>-->
+<!--                                                    <option value="Project manager">Project manager</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; Col &ndash;&gt;-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">Year of expreience</label>-->
+<!--                                                <input th:field="*{yearOfExperience}" type="number" class="form-control" placeholder="">-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; Col &ndash;&gt;-->
+<!--                                    </div>-->
+
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">Skills</label>-->
+<!--                                                <select th:field="*{skills}" class="js-example-basic-multiple form-select"-->
+<!--                                                    multiple="multiple" data-width="100%">-->
+<!--                                                    <option value="HTML">HTML</option>-->
+<!--                                                    <option value="CSS">CSS</option>-->
+<!--                                                    <option value="Javascript">Javascript</option>-->
+<!--                                                    <option value="SQL Sever">SQL Sever</option>-->
+<!--                                                    <option value="Java">Java</option>-->
+<!--                                                    <option value="C#">C#</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">Highest Level</label>-->
+<!--                                                <select class="form-select" th:field="*{highest_level}">-->
+<!--                                                    <option selected="" disabled="" value="-1">Select a Highest Level</option>-->
+<!--                                                    <option value="High school">High school</option>-->
+<!--                                                    <option value="Bachelor’s Degree">Bachelor’s Degree</option>-->
+<!--                                                    <option value="Master Degree, PhD">Master Degree, PhD</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">Recruiter <span-->
+<!--                                                    class="text-danger">*</span></label>-->
+<!--                                                <input  type="text" class="form-control" placeholder="">-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; Col &ndash;&gt;-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label">Note</label>-->
+<!--                                                <input th:field="*{note}" type="text" class="form-control">-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; Col &ndash;&gt;-->
+<!--                                    </div>-->
+
+<!--                                    <button type="submit" class="btn btn-primary submit">Submit form</button>-->
+<!--                                </form>-->
+                                <form id="formValidate">
+                                    <h6 class="card-title">Personal <span class="text-primary">Information</span>  <hr style="height: 1.25px;"> </h6>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Full Name <span
+                                                        class="text-danger">*</span></label>
+                                                <input id="fullname" name="fullname" type="text" class="form-control" placeholder="Enter full name" />
+                                            </div>
+                                        </div><!-- Col -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Email <span
+                                                        class="text-danger">*</span></label>
+                                                <input id="email" name="email" type="email" class="form-control" placeholder="Enter an email">
+                                            </div>
+                                        </div><!-- Col -->
+                                    </div>
+                                    <!-- Row -->
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">D.O.B <span
+                                                        class="text-danger">*</span></label>
+                                                <input id="dob" name="dob" type="date" class="form-control" placeholder="">
+                                            </div>
+                                        </div><!-- Col -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Address <span
+                                                        class="text-danger">*</span></label>
+                                                <input id="address" name="address" type="text" class="form-control" placeholder="Enter an address">
+                                            </div>
+                                        </div><!-- Col -->
+                                    </div>
+                                    <!-- Row -->
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Phone number <span
+                                                        class="text-danger">*</span></label>
+                                                <input id="phoneNo" name="phoneNo" type="text" class="form-control" placeholder="Enter an number">
+                                            </div>
+                                        </div><!-- Col -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Gender <span
+                                                        class="text-danger">*</span></label>
+                                                <select id="gender" name="gender" class="form-select">
+                                                    <option selected="" disabled="" value="-1">Select a gender</option>
+                                                    <option value="true">Male</option>
+                                                    <option value="false">Female</option>
+                                                </select>
+                                            </div>
+                                        </div><!-- Col -->
+                                    </div>
+
+                                    <!-- Profressional information -->
+                                    <h6 class="card-title">Profressional <span class="text-primary">Information <hr style="height: 1.25px;"></span> </h6>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">CV Attachment <span
+                                                        class="text-danger">*</span></label>
+                                                <input id="pdf-file" name="pdf_file" class="form-control" type="file">
+                                                <input type="hidden" name="cvAttachment" id="cvAttachment">
+                                            </div>
+                                        </div><!-- Col -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Status <span
+                                                        class="text-danger">*</span></label>
+                                                <select id="candidateStatus" name="candidateStatus" class="form-select" >
+                                                    <option selected="" disabled="" value="-1">Select a status</option>
+                                                    <option value="Open">Open</option>
+                                                    <option value="Banned">Banned</option>
+                                                </select>
+                                            </div>
+                                        </div><!-- Col -->
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Position <span
+                                                        class="text-danger">*</span></label>
+                                                <select id="postion" name="postion" class="form-select">
+                                                    <option selected="" disabled=""  value="-1">Select a position</option>
+                                                    <option value="Backend Developer">Backend Developer</option>
+                                                    <option value="Business Analyst">Business Analyst</option>
+                                                    <option value="Tester">Tester</option>
+                                                    <option value="HR">HR</option>
+                                                    <option value="Project manager">Project manager</option>
+                                                </select>
+                                            </div>
+                                        </div><!-- Col -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Year of expreience <span
+                                                        class="text-danger">*</span></label>
+                                                <input id="yearOfExperience" name="yearOfExperience" type="number" class="form-control" placeholder="">
+                                            </div>
+                                        </div><!-- Col -->
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Skills <span
+                                                        class="text-danger">*</span></label>
+                                                <select id="skills" name="skills" class="js-example-basic-multiple form-select"
+                                                        multiple="multiple" data-width="100%">
+                                                    <option value="HTML">HTML</option>
+                                                    <option value="CSS">CSS</option>
+                                                    <option value="Javascript">Javascript</option>
+                                                    <option value="SQL Sever">SQL Sever</option>
+                                                    <option value="Java">Java</option>
+                                                    <option value="C#">C#</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Highest Level <span
+                                                        class="text-danger">*</span></label>
+                                                <select id="highest_level" name="highest_level" class="form-select js-example-basic-single">
+                                                    <option selected="" disabled="" value="-1">Select a Highest Level</option>
+                                                    <option value="High school">High school</option>
+                                                    <option value="Bachelor’s Degree">Bachelor’s Degree</option>
+                                                    <option value="Master Degree, PhD">Master Degree, PhD</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Recruiter <span
+                                                        class="text-danger">*</span></label>
+                                                <select id="recruiter" name="recruiter" class="form-select js-example-basic-single" >
+                                                    <th:block th:each="recruiter : ${recruiterList}">
+                                                        <option th:value="${recruiter.userId}" th:text="${recruiter.userName}"></option>
+                                                    </th:block>
+                                                </select>
+                                            </div>
+                                        </div><!-- Col -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Note</label>
+                                                <input id="note" type="text" class="form-control">
+                                            </div>
+                                        </div><!-- Col -->
+                                    </div>
+
+                                    <button id="buttonSubmit" type="submit" class="btn btn-primary submit">Submit form</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- partial:../../partials/_footer.html -->
+            <footer
+                class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
+                <p class="text-muted mb-1 mb-md-0">IMS Recruitment</p>
+                <p class="text-muted">Handcrafted With <i class="mb-1 text-primary ms-1 icon-sm"
+                        data-feather="heart"></i></p>
+            </footer>
+            <!-- partial -->
+
+        </div>
+    </div>
+
+    <!-- core:js -->
+    <script src="/assets/vendors/core/core.js"></script>
+    <!-- endinject -->
+
+    <!-- Plugin js for this page -->
+    <script src="/assets/vendors/select2/select2.min.js"></script>
+    <script src="/assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+    <script src="/assets/vendors/jquery-validation/jquery.validate.min.js"></script>
+    <!-- End plugin js for this page -->
+
+    <!-- inject:js -->
+    <script src="/assets/vendors/feather-icons/feather.min.js"></script>
+    <script src="/assets/js/template.js"></script>
+    <!-- endinject -->
+
+    <!-- Custom js for this page -->
+    <script src="/assets/js/select2.js"></script>
+    <script src="/assets/js/Candidate/create-candidate.js"></script>
+    <script src="/assets/js/FileUpload/UploadFile.js"></script>
+
+    <!-- End custom js for this page -->
+</body>
+
+</html>
