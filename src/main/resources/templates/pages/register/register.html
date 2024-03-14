@@ -1,152 +1,225 @@
-<!doctype html>
-<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:java8="http://www.thymeleaf.org/extras/java8time">
 
-    <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-              crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
+    <meta name="author" content="NobleUI">
+    <meta name="keywords"
+          content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-        <style>
-            @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+    <title>Register</title>
 
-            * {
-                padding: 0;
-                margin: 0;
-                outline: none;
-            }
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- End fonts -->
 
-            body {
-                font-family: 'Roboto', sans-serif !important;
-                height: 100vh;
-                color: #3a3e42 !important;
-            }
+    <!-- core:css -->
+    <link rel="stylesheet" href="/assets/vendors/core/core.css">
+    <!-- endinject -->
 
-            .AppForm .AppFormLeft h1 {
-                font-size: 35px;
-            }
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="/assets/vendors/sweetalert2/sweetalert2.min.css">
 
-            .AppForm .AppFormLeft input:focus {
-                border-color: #ced4da;
-            }
+    <!-- End plugin css for this page -->
 
-            .AppForm .AppFormLeft input::placeholder {
-                font-size: 15px;
-            }
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/assets/fonts/feather-font/css/iconfont.css">
+    <link rel="stylesheet" href="/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <!-- endinject -->
 
-            .AppForm .AppFormLeft i {
-                position: absolute;
-                right: 0;
-                top: 50%;
-                transform: translateY(-50%);
-            }
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/demo1/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="/assets/images/favicon.png" />
 
-            .AppForm .AppFormLeft a {
-                color: #3a3e42;
-            }
+    <style>
+        form .card-title{
+            text-align: end;
+            margin-right: 30px;
+            margin-top: 15px;
+            font-size: 17px !important;
+        }
+        #register-body {
+            margin-left: 5%;
+            width: 90%;
+        }
+    </style>
+</head>
 
-            .AppForm .AppFormLeft button {
-                background: linear-gradient(45deg, #8D334C, #CF6964);
-                border-radius: 30px;
-            }
-
-            .AppForm .AppFormLeft p span {
-                color: #007bff;
-            }
-
-            .AppForm .AppFormRight {
-                background-image: url('https://i.ibb.co/tDLqQtj/bg.jpg');
-                height: 450px;
-                background-size: cover;
-                background-position: center;
-            }
-
-            .AppForm .AppFormRight:after {
-                content: "";
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(45deg, #8D334C, #CF6964);
-                opacity: 0.5;
-            }
-
-            .AppForm .AppFormRight h2 {
-                z-index: 1;
-            }
-
-            .AppForm .AppFormRight h2::after {
-                content: "";
-                position: absolute;
-                width: 100%;
-                height: 2px;
-                background-color: #fff;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .AppForm .AppFormRight p {
-                z-index: 1;
-            }
-        </style>
-    </head>
-
-    <body>
-        <div class="container h-100">
-            <div class="row h-100 justify-content-center align-items-center">
-                <form class="col-md-9" method="post" th:action="@{/register}">
-                    <div class="AppForm shadow-lg">
-                        <div class="row">
-                            <div class="col-md-6 d-flex justify-content-center align-items-center">
-                                <div class="AppFormLeft">
-                                    <h1>Register</h1>
-                                    <div class="form-group position-relative mb-4">
-                                        <input type="text"
-                                               class="form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none"
-                                               name="username" id="username" placeholder="Username" required>
-                                    </div>
-                                    <div class="form-group position-relative mb-4">
-                                        <input type="password"
-                                               class="form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none"
-                                               name="password" id="password" placeholder="Password" required>
-                                    </div>
-                                    <div class="form-group position-relative mb-4">
-                                        <input type="password"
-                                               class="form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none"
-                                               name="password" id="password2" placeholder="Re-enter password" required>
-                                    </div>
-                                    <input type="submit" value="Register" class="btn btn-success btn-block shadow border-0 py-2 text-uppercase">
+<body>
+<div class="main-wrapper">
+    <div class="page-wrapper" id="register-body">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-12 stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Username<span
+                                                    class="text-danger">*</span></label>
+                                            <input id="username" type="text" class="form-control" placeholder="Enter username" />
+                                        </div>
+                                    </div><!-- Col -->
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Password<span
+                                                    class="text-danger">*</span></label>
+                                            <input id="password" type="password" class="form-control" placeholder="Enter password">
+                                        </div>
+                                    </div><!-- Col -->
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div
-                                        class="AppFormRight position-relative d-flex justify-content-center flex-column align-items-center text-center p-5 text-white">
-                                    <h2 class="position-relative px-4 pb-3 mb-4">Welcome</h2>
+
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Full Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input id="fullName" type="text" class="form-control" placeholder="Enter full name" />
+                                        </div>
+                                    </div><!-- Col -->
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Email <span
+                                                    class="text-danger">*</span></label>
+                                            <input id="email" type="email" class="form-control" placeholder="Enter an email">
+                                        </div>
+                                    </div><!-- Col -->
                                 </div>
-                            </div>
+                                <!-- Row -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">D.O.B</label>
+                                            <input id="dob" type="date" class="form-control" placeholder="">
+                                        </div>
+                                    </div><!-- Col -->
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Address</label>
+                                            <input id="address" type="text" class="form-control" placeholder="Enter an address">
+                                        </div>
+                                    </div><!-- Col -->
+                                </div>
+                                <!-- Row -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Phone number</label>
+                                            <input id="phoneNo" type="text" class="form-control" placeholder="Enter an number">
+                                        </div>
+                                    </div><!-- Col -->
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Gender <span
+                                                    class="text-danger">*</span></label>
+                                            <select id="gender" class="form-select">
+                                                <option selected="" disabled="" value="-1">Select a gender</option>
+                                                <option value="true">Male</option>
+                                                <option value="false">Female</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- Col -->
+                                </div>
+                                <!-- Row -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Role <span class="text-danger">*</span></label>
+                                            <select id="role" class="form-select">
+                                                <option selected="" disabled="" value="-1">Select a position</option>
+                                                <option value="Admin">Admin</option>
+                                                <option value="Recruiter">Recruiter</option>
+                                                <option value="Interviewer">Interviewer</option>
+                                                <option value="Manager">Manager</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- Col -->
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Department <span
+                                                    class="text-danger">*</span></label>
+                                            <select id="department" class="form-select">
+                                                <option selected="" disabled="" value="-1">Select a department</option>
+                                                <option value="IT">IT</option>
+                                                <option value="HR">HR</option>
+                                                <option value="Finance">Finance</option>
+                                                <option value="Communication">Communication</option>
+                                                <option value="Marketing">Marketing</option>
+                                                <option value="Accounting">Accounting</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- Col -->
+                                </div>
+                                <!-- Row -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Status <span class="text-danger">*</span></label>
+                                            <select id="status" class="form-select">
+                                                <option selected="" disabled="" value="-1">Select a status</option>
+                                                <option value="true">Activated</option>
+                                                <option value="false">De-activated</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- Col -->
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Note</label>
+                                            <input id="note" type="text" class="form-control" placeholder="N/A"/>
+                                        </div>
+                                    </div><!-- Col -->
+                                </div>
+
+                                <button id="buttonSubmit" type="submit" class="btn btn-primary submit">Submit form</button>
+                            </form>
                         </div>
-
                     </div>
-
-                </form>
+                </div>
             </div>
         </div>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-                crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                crossorigin="anonymous"></script>
-    </body>
+
+        <!-- partial:../../partials/_footer.html -->
+        <footer
+                class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
+            <p class="text-muted mb-1 mb-md-0">IMS Recruitment</p>
+        </footer>
+        <!-- partial -->
+
+    </div>
+</div>
+
+<!-- core:js -->
+<script src="/assets/vendors/core/core.js"></script>
+<!-- endinject -->
+
+<!-- Plugin js for this page -->
+<script src="/assets/vendors/select2/select2.min.js"></script>
+<script src="/assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+<!-- End plugin js for this page -->
+
+<!-- inject:js -->
+<script src="/assets/vendors/feather-icons/feather.min.js"></script>
+<script src="/assets/js/template.js"></script>
+<!-- endinject -->
+
+<!-- Custom js for this page -->
+<script src="/assets/js/select2.js"></script>
+<script src="/assets/js/Register/register.js"></script>
+<!-- End custom js for this page -->
+</body>
 
 </html>

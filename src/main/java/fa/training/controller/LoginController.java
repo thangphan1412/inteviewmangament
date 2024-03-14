@@ -13,9 +13,8 @@ public class LoginController {
     }
 
     @GetMapping("/home")
-    @ResponseBody
     public String home() {
-        return "home";
+        return "pages/general/blank-page";
     }
 
     @GetMapping("/")
