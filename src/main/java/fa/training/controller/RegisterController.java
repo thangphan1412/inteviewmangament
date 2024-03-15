@@ -27,10 +27,7 @@ public class RegisterController {
         {
             String userName = user.getUserName();
 
-            Integer numberUserNameExist = userService.getNumberUserNameExist(userName.toString());
-            if (numberUserNameExist > 0) {
-                numberUserNameExist++;
-            }
+            if (userService.getNumberUserNameExist(userName.toString()) != null) return ResponseEntity.badRequest().body("Username existed.");
             user.setActive(true);
 
             BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
