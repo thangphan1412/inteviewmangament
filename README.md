@@ -1,12 +1,3 @@
-# HN23_FRF_FJW_05_G1
-
-
-Member: 
-- Nguyễn Thiện Thắng
-- Chu Hải Đăng
-- Lưu Đức Khánh
-Leader:
-- Lê Đào Quang Dũng
 
 
 ## Getting started
