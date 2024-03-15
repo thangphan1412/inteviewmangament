@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.annotation.security.PermitAll;
 import javax.mail.MessagingException;
 
 @Controller
+@PermitAll
 public class RegisterController {
 
     @Autowired
@@ -26,7 +28,7 @@ public class RegisterController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody User user) {
+    public ResponseEntity<?> register(@RequestBody User user) throws Exception {
         {
             // xử lý thông tin candidate được gửi lên từ form
 
@@ -34,7 +36,7 @@ public class RegisterController {
 
             Integer numberUserNameExist = userService.getNumberUserNameExist(userName.toString());
             if (numberUserNameExist > 0) {
-                numberUserNameExist++;
+                throw new Exception();
             }
             user.setActive(true);
 

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http:/www.thymeleaf.org">
 
     <head>
-        <title>Title</title>
+        <title>IMS</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -106,19 +106,28 @@
                                 <div class="AppFormLeft">
 
                                     <h1>Login</h1>
-                                    <div class="form-group position-relative mb-4">
-                                        <input type="text"
-                                               class="form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none"
-                                               name="username" id="username" placeholder="Username" required>
-                                        <i class="fa fa-user-o"></i>
-                                    </div>
-                                    <div class="form-group position-relative mb-4">
-                                        <input type="password"
-                                               class="form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none"
-                                               name="password" id="password" placeholder="Password" required>
-                                        <i class="fa fa-key"></i>
+                                    <form th:action="@{/login}" method="POST">
+                                        <div class="form-group position-relative mb-4">
+                                            <input type="text"
+                                                   class="form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none"
+                                                   name="username" id="username" placeholder="Username" required>
+                                            <i class="fa fa-user-o"></i>
+                                        </div>
+                                        <div class="form-group position-relative mb-4">
+                                            <input type="password"
+                                                   class="form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none"
+                                                   name="password" id="password" placeholder="Password" required>
+                                            <i class="fa fa-key"></i>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col text-left">
+                                            </div>
+                                        </div>
+                                        <div class="sign-btn text-center">
+                                            <button class="btn btn-theme">Sign In</button>
+                                        </div>
+                                    </form>
 
-                                    </div>
                                     <div class="row  mt-4 mb-4">
                                         <div class="col-md-6">
                                             <div class="form-check">
@@ -140,14 +149,12 @@
                                     <div class="alert alert-danger text-center" th:if="${param.error}">
                                         Invalid username and password
                                     </div>
-                                    <input type="submit" value="Login" class="btn btn-success btn-block shadow border-0 py-2 text-uppercase">
+<!--                                    <input type="submit" value="Login" class="btn btn-success btn-block shadow border-0 py-2 text-uppercase">-->
+<!--                                    <button id="buttonSubmit" type="submit" class="btn btn-success btn-block shadow border-0 py-2 text-uppercase">Login</button>-->
 
                                     <p class="text-center mt-5">
                                         Don't have an account?
-                                        <a href="../register">
-                                        Create your account
-                                    </a>
-
+                                        <a href="../register">Create your account</a>
                                     </p>
 
                                 </div>
@@ -176,6 +183,10 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                 crossorigin="anonymous"></script>
+        <script src="/assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+        <script src="/assets/vendors/core/core.js"></script>
+<!--        <script src="/assets/js/Login/login.js"></script>-->
+
     </body>
 
 </html>

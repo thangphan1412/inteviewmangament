@@ -1,54 +1,51 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:java8="http://www.thymeleaf.org/extras/java8time">
-
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
-    <meta name="author" content="NobleUI">
-    <meta name="keywords"
-          content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <meta content="Responsive HTML Admin Dashboard Template based on Bootstrap 5" name="description">
+    <meta content="NobleUI" name="author">
+    <meta content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web"
+          name="keywords">
 
     <title>Register</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- End fonts -->
 
     <!-- core:css -->
-    <link rel="stylesheet" href="/assets/vendors/core/core.css">
+    <link href="/assets/vendors/core/core.css" rel="stylesheet">
     <!-- endinject -->
 
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="/assets/vendors/select2/select2.min.css">
-    <link rel="stylesheet" href="/assets/vendors/sweetalert2/sweetalert2.min.css">
+    <link href="/assets/vendors/select2/select2.min.css" rel="stylesheet">
+    <link href="/assets/vendors/sweetalert2/sweetalert2.min.css" rel="stylesheet">
 
     <!-- End plugin css for this page -->
 
     <!-- inject:css -->
-    <link rel="stylesheet" href="/assets/fonts/feather-font/css/iconfont.css">
-    <link rel="stylesheet" href="/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link href="/assets/fonts/feather-font/css/iconfont.css" rel="stylesheet">
+    <link href="/assets/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
     <!-- endinject -->
 
     <!-- Layout styles -->
-    <link rel="stylesheet" href="/assets/css/demo1/style.css">
+    <link href="/assets/css/demo1/style.css" rel="stylesheet">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="/assets/images/favicon.png" />
+    <link href="/assets/images/favicon.png" rel="shortcut icon"/>
 
     <style>
-        form .card-title{
+        form .card-title {
             text-align: end;
             margin-right: 30px;
             margin-top: 15px;
             font-size: 17px !important;
         }
+
         #register-body {
             margin-left: 5%;
             width: 90%;
@@ -70,14 +67,16 @@
                                         <div class="mb-3">
                                             <label class="form-label">Username<span
                                                     class="text-danger">*</span></label>
-                                            <input id="username" type="text" class="form-control" placeholder="Enter username" />
+                                            <input class="form-control" id="username" placeholder="Enter username"
+                                                   type="text"/>
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Password<span
                                                     class="text-danger">*</span></label>
-                                            <input id="password" type="password" class="form-control" placeholder="Enter password">
+                                            <input class="form-control" id="password" placeholder="Enter password"
+                                                   type="password">
                                         </div>
                                     </div><!-- Col -->
                                 </div>
@@ -88,14 +87,16 @@
                                         <div class="mb-3">
                                             <label class="form-label">Full Name <span
                                                     class="text-danger">*</span></label>
-                                            <input id="fullName" type="text" class="form-control" placeholder="Enter full name" />
+                                            <input class="form-control" id="fullName" placeholder="Enter full name"
+                                                   type="text"/>
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Email <span
                                                     class="text-danger">*</span></label>
-                                            <input id="email" type="email" class="form-control" placeholder="Enter an email">
+                                            <input class="form-control" id="email" placeholder="Enter an email"
+                                                   type="email">
                                         </div>
                                     </div><!-- Col -->
                                 </div>
@@ -104,13 +105,14 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">D.O.B</label>
-                                            <input id="dob" type="date" class="form-control" placeholder="">
+                                            <input class="form-control" id="dob" placeholder="" type="date">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Address</label>
-                                            <input id="address" type="text" class="form-control" placeholder="Enter an address">
+                                            <input class="form-control" id="address" placeholder="Enter an address"
+                                                   type="text">
                                         </div>
                                     </div><!-- Col -->
                                 </div>
@@ -119,15 +121,16 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Phone number</label>
-                                            <input id="phoneNo" type="text" class="form-control" placeholder="Enter an number">
+                                            <input class="form-control" id="phoneNo" placeholder="Enter an number"
+                                                   type="text">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Gender <span
                                                     class="text-danger">*</span></label>
-                                            <select id="gender" class="form-select">
-                                                <option selected="" disabled="" value="-1">Select a gender</option>
+                                            <select class="form-select" id="gender">
+                                                <option disabled="" selected="" value="-1">Select a gender</option>
                                                 <option value="true">Male</option>
                                                 <option value="false">Female</option>
                                             </select>
@@ -139,9 +142,8 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Role <span class="text-danger">*</span></label>
-                                            <select id="role" class="form-select">
-                                                <option selected="" disabled="" value="-1">Select a position</option>
-                                                <option value="Admin">Admin</option>
+                                            <select class="form-select" id="role">
+                                                <option disabled="" selected="" value="-1">Select a position</option>
                                                 <option value="Recruiter">Recruiter</option>
                                                 <option value="Interviewer">Interviewer</option>
                                                 <option value="Manager">Manager</option>
@@ -152,8 +154,8 @@
                                         <div class="mb-3">
                                             <label class="form-label">Department <span
                                                     class="text-danger">*</span></label>
-                                            <select id="department" class="form-select">
-                                                <option selected="" disabled="" value="-1">Select a department</option>
+                                            <select class="form-select" id="department">
+                                                <option disabled="" selected="" value="-1">Select a department</option>
                                                 <option value="IT">IT</option>
                                                 <option value="HR">HR</option>
                                                 <option value="Finance">Finance</option>
@@ -169,8 +171,8 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Status <span class="text-danger">*</span></label>
-                                            <select id="status" class="form-select">
-                                                <option selected="" disabled="" value="-1">Select a status</option>
+                                            <select class="form-select" id="status">
+                                                <option disabled="" selected="" value="-1">Select a status</option>
                                                 <option value="true">Activated</option>
                                                 <option value="false">De-activated</option>
                                             </select>
@@ -179,12 +181,13 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Note</label>
-                                            <input id="note" type="text" class="form-control" placeholder="N/A"/>
+                                            <input class="form-control" id="note" placeholder="N/A" type="text"/>
                                         </div>
                                     </div><!-- Col -->
                                 </div>
 
-                                <button id="buttonSubmit" type="submit" class="btn btn-primary submit">Submit form</button>
+                                <button class="btn btn-primary submit" id="buttonSubmit" type="submit">Submit form
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -204,7 +207,6 @@
 
 <!-- core:js -->
 <script src="/assets/vendors/core/core.js"></script>
-<!-- endinject -->
 
 <!-- Plugin js for this page -->
 <script src="/assets/vendors/select2/select2.min.js"></script>

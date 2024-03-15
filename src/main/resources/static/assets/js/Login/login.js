@@ -3,17 +3,7 @@ $(document).ready(function () {
         e.preventDefault();
         var user = {
             "userName": $("#username").val(),
-            "password": $("#password").val(),
-            "fullName": $("#fullName").val(),
-            "email": $("#email").val(),
-            "dob": $("#dob").val(),
-            "address": $("#address").val(),
-            "phoneNo": $("#phoneNo").val(),
-            "gender": $("#gender").val(),
-            "role": $("#role").val(),
-            "department": $("#department").val(),
-            "status": $("#status").val(),
-            "note": $("#note").val()
+            "password": $("#password").val()
         };
 
         Swal.fire({
@@ -27,13 +17,13 @@ $(document).ready(function () {
         });
         $.ajax({
             type: 'POST',
-            url: '/register',
+            url: '/login',
             contentType: "application/json",
             data: JSON.stringify(user),
             success: function (data) {
                 // Xử lý kết quả trả về khi server xử lý thành công
                 Swal.close();
-                console.log("hello success");
+                console.log(data);
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -44,8 +34,11 @@ $(document).ready(function () {
 
                 Toast.fire({
                     icon: 'success',
-                    title: 'Register successfully'
+                    title: 'Login successfully'
                 })
+
+                sessionStorage.setItem("user", JSON.stringify(data));
+                window.location.href = "/home";
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 // Xử lý lỗi khi server xử lý thất bại
@@ -61,7 +54,7 @@ $(document).ready(function () {
 
                 Toast.fire({
                     icon: 'error',
-                    title: 'Register failed'
+                    title: 'Login failed'
                 })
 
             }
